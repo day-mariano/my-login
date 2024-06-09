@@ -13,7 +13,7 @@ const LoginPage = () => {
 
   return (
     <div id="login">
-      <h1 id="title">Login do serviço</h1>
+      <h1 id="title">Login do sistema</h1>
       <form className="form" onSubmit={handleSumit}>
         <div className="field">
           <label htmlFor="email">Email</label>
