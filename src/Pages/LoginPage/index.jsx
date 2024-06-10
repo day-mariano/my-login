@@ -1,19 +1,24 @@
 import "./styles.css"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { AuthContext } from "../../contexts/auth"
 
 const LoginPage = () => {
+  const {authenticated, login} = useContext(AuthContext)
+
   const [email, setEmail] = useState("")
-  const [pasword, setPasword] = useState("")
+  const [password, setPasword] = useState("")
 
   const handleSumit = (e) => {
     e.preventDefault()
+    console.log("submit", {email, password})
 
-    console.log("submit", {email, pasword})
+    login(email, password)
   }
 
   return (
     <div id="login">
       <h1 id="title">Login do sistema</h1>
+      <p>{String(authenticated)}</p>
       <form className="form" onSubmit={handleSumit}>
         <div className="field">
           <label htmlFor="email">Email</label>
@@ -31,7 +36,7 @@ const LoginPage = () => {
             type="password" 
             name="password" 
             id="password" 
-            value={pasword}
+            value={password}
             onChange={(e) => setPasword(e.target.value)}
           />
         </div>
